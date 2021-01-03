@@ -98,26 +98,26 @@ int main(void)
   /* Infinite loop */
   /* USER CODE BEGIN WHILE */
 HAL_ADC_Start(&hadc1);
-uint32_t gas_val;
+uint32_t mq7_variable;
   while (1)
   {
 	  if( HAL_ADC_PollForConversion(&hadc1, 10000) == HAL_OK)
 	  {
-		  gas_val = HAL_ADC_GetValue(&hadc1);
+		  mq7_variable = HAL_ADC_GetValue(&hadc1);
 	  }
-	   if(gas_val < 80)
+	   if(mq7_variable < 80)
 	   {
 	   HAL_GPIO_WritePin(GPIOD, GPIO_PIN_12, GPIO_PIN_SET);
-	   HAL_Delay(10);
+	   HAL_Delay(1000);
 	   HAL_GPIO_WritePin(GPIOD, GPIO_PIN_12, GPIO_PIN_RESET);
 	   }
 	   else
 	   {
 	   HAL_GPIO_WritePin(GPIOD, GPIO_PIN_13, GPIO_PIN_SET);
-	   HAL_Delay(10);
+	   HAL_Delay(10000);
 	   HAL_GPIO_WritePin(GPIOD, GPIO_PIN_13, GPIO_PIN_RESET);
 	   }
-	   HAL_SPI_Transmit(&hspi1,  &gas_val, 1,10);
+	   HAL_SPI_Transmit(&hspi1,  &mq7_variable);
     /* USER CODE END WHILE */
 
     /* USER CODE BEGIN 3 */
