@@ -105,16 +105,16 @@ uint32_t mq7_variable;
 	  {
 		  mq7_variable = HAL_ADC_GetValue(&hadc1);
 	  }
-	   if(mq7_variable < 80)
+	   if(mq7_variable < 81)
 	   {
 	   HAL_GPIO_WritePin(GPIOD, GPIO_PIN_12, GPIO_PIN_SET);
-	   HAL_Delay(1000);
+	   HAL_Delay(500);
 	   HAL_GPIO_WritePin(GPIOD, GPIO_PIN_12, GPIO_PIN_RESET);
 	   }
 	   else
 	   {
 	   HAL_GPIO_WritePin(GPIOD, GPIO_PIN_13, GPIO_PIN_SET);
-	   HAL_Delay(10000);
+	   HAL_Delay(500);
 	   HAL_GPIO_WritePin(GPIOD, GPIO_PIN_13, GPIO_PIN_RESET);
 	   }
 	   HAL_SPI_Transmit(&hspi1,  &mq7_variable);
